@@ -1,17 +1,19 @@
 import React from 'react'
+import CardButton from './CardButton';
 
-const CardList = () => {
+const CardList = ({ title, subtext, onClick }) => {
     const name = "김현호"
-    const subtext = "서브택스트"
+    const handclick = () => {
+        onClick();
+    }
 
     return (
         <div className='card'>
-            <h5>{name}</h5>
+            <h5>{title}</h5>
             <p className='card-sub-text'>
                 {subtext}
             </p>
-            <button type="button" className='card-button'>파란색
-            </button>
+            <CardButton onClick={handclick} />
         </div>
     )
 }

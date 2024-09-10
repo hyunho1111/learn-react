@@ -1,5 +1,10 @@
-import CardList from "./components/CardList";
+// import CardList from "./components/CardList";
+// import Cardbutton from "./components/CardButton";
+
 import Login from "./components/Login";
+
+// import Counter from "./components/Counter";
+
 
 
 function App() {
@@ -82,14 +87,25 @@ function App() {
   }
   console.log("🚀 ~ App ~ copyperson:", copyperson)
 
-
+  const handclick = () => {
+    window.location.href = "https://ko.legacy.reactjs.org/docs/create-a-new-react-app.html"
+  }
 
   // view
   return <div>
     <Login />
+    {/* <Counter /> */}
+    {/* <CardList title={"김우빈 짱"}
+      subtext="후츠릿짱"
+      onClick={handclick} />
+    <CardList title={"봄이와도~"}
+      subtext="설레지않을것이고~"
+      onClick={handclick} /> */}
 
   </div>;
 }
+
+
 
 
 export default App;
