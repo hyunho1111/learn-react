@@ -1,7 +1,9 @@
-// import CardList from "./components/CardList";
+import { useEffect, useState } from "react";
+import CardList from "./components/CardList";
+import ThemeButton from "./components/ThemeButton";
 // import Cardbutton from "./components/CardButton";
 
-import Login from "./components/Login";
+// import Login from "./components/Login";
 
 // import Counter from "./components/Counter";
 
@@ -90,19 +92,48 @@ function App() {
   const handclick = () => {
     window.location.href = "https://ko.legacy.reactjs.org/docs/create-a-new-react-app.html"
   }
+  //모드 변경 논리
+  // 기본 백그라운드 설정은 라이트모드로 설정한다.
+  // Themebutton에 버튼을 1회 클릭시 다크모드가 활성화 되도록 설정한다.
+  // 뷰 화면에서 Themebutton을 클릭해서 다크모드가 활성화 되는것을 확인한다
+  // ThemeButton을 2회 클릭하면 다크모드가 해제되서 라이트모드로 다시 돌아가도록 설정한다
+  // 뷰화면에서 라이트모드가 활성화 되는것을 확인한다.
+
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const handleTheme = () => {
+    setIsDarkMode(!isDarkMode)
+  };
+  const [isLoggedin, setIsLoggedin] = useState(false)
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      text: "첫번째 메시지",
+    }
+  ])
+
+  useEffect(() => {
+    console.log(isDarkMode ? "다크 모드" : "라이트 모드")
+    alert(isDarkMode ? "다크 모드" : "라이트 모드")
+  }, [isDarkMode])
+
 
   // view
-  return <div>
-    <Login />
-    {/* <Counter /> */}
-    {/* <CardList title={"김우빈 짱"}
-      subtext="후츠릿짱"
-      onClick={handclick} />
-    <CardList title={"봄이와도~"}
-      subtext="설레지않을것이고~"
-      onClick={handclick} /> */}
-
-  </div>;
+  return (
+    <div className={`wrap ${isDarkMode ? 'dark-mode' : 'light-mode'
+      } `}>
+      <CardList title={"김우빈 짱"}
+        subtext="후츠릿짱"
+        onClick={handclick} />
+      <CardList title={"봄이와도~"}
+        subtext="설레지않을것이고~"
+        onClick={handclick} />
+      <ThemeButton isDarkMode={isDarkMode} onTheme={handleTheme} />
+      {/* <Login /> */}
+      {/* <Counter /> */}
+      {isLoggedin ? <h2>환영합니다</h2> : <h2>로그인 해주세요</h2>}
+      {messages.length && <h2>새로운 메시지가 {messages.length}개 있습니다.</h2>}
+    </div>);
 }
 
 

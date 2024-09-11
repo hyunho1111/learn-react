@@ -1,7 +1,6 @@
 import React from 'react'
 import Inputfield from './Inputfield'
 import LoginButton from './LoginButton'
-import HHH from './HHH'
 
 const Login = () => {
     return (
@@ -13,7 +12,6 @@ const Login = () => {
                 <LoginButton text="로그인" onClick={() => console.log('로그인 클릭')} />
                 <p className='or-divider'>또는</p>
                 <LoginButton text="Google로 계속하기" onClick={() => console.log('Google 로그인 클릭')} isSocial={true} />
-                <HHH type="연습" placeholder="연습" />
             </div>
         </div>
     )
